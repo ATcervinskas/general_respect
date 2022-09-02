@@ -4,7 +4,7 @@ const sectBtn = document.querySelectorAll('.control');
 const allSections = document.querySelector('.main-content');
 
 function pageTransition() {
-    // button click actice class
+    // button click active class
     for (let val of sectBtn) {
         val.addEventListener('click', function () {
             let activeBtn = document.querySelector('.active-btn');
@@ -13,5 +13,16 @@ function pageTransition() {
         })
     }
 }
+// When button is clicked set active class in to the section
+allSections.addEventListener('click', function (e) {
+    let buttonId = e.target.dataset.id;
+
+    if (buttonId) {
+        sections.forEach((section) => {
+                section.classList.remove('active');
+        })
+        document.querySelector('.' + buttonId).classList.add('active');
+    }
+})
 
 pageTransition();
