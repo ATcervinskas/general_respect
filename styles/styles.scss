@@ -1,3 +1,4 @@
+// TODO split in to sub-files
 * {
   margin: 0;
   padding: 0;
@@ -74,21 +75,44 @@ section {
 .sec1 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: #27AE60;
 }
 
 .sec2 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: #064ff1;
+
 }
 
 .sec3 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: #ca0b5a;
+
 }
 
 .sec4 {
   display: none;
   transform: translateY(0) scale(1);
+}
+
+.sec5 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+
+.active {
+  display: block;
+  animation: scaleAnim 1s ease-in-out;
+  @keyframes scaleAnim {
+    0% {
+      transform: translate(-100%) scaleY(0);
+    }
+    100% {
+      transform: translate(0) scaleY(1);
+    }
+  }
 }
 
 //control buttons
@@ -107,9 +131,10 @@ section {
   .active-btn {
     background-color: var(--color-secondary) !important;
     transition: all .4s ease-in-out;
-      i{
-        color: var(--color-white);
-      }
+
+    i {
+      color: var(--color-white);
+    }
   }
 
   .control {
