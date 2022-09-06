@@ -4,7 +4,7 @@ const sectBtn = document.querySelectorAll('.control');
 const allSections = document.querySelector('.main-content');
 
 function pageTransition() {
-    // button click active class
+    // button click active-btn class
     for (let val of sectBtn) {
         val.addEventListener('click', function () {
             let activeBtn = document.querySelector('.active-btn');
@@ -13,13 +13,19 @@ function pageTransition() {
         })
     }
 }
-// When button is clicked set active class in to the section
+
+// When button is clicked set active class in to the section and button
 allSections.addEventListener('click', function (e) {
     let buttonId = e.target.dataset.id;
 
     if (buttonId) {
+        sectBtn.forEach((btn) => {
+            btn.classList.remove('active');
+        })
+        e.target.classList.add('active');
+
         sections.forEach((section) => {
-                section.classList.remove('active');
+            section.classList.remove('active');
         })
         document.querySelector('.' + buttonId).classList.add('active');
     }
