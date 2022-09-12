@@ -1,36 +1,32 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
 require('./bootstrap');
 
-const sections = document.querySelectorAll('.section');
-const sectBtns = document.querySelectorAll('.controls');
-const sectBtn = document.querySelectorAll('.control');
-const allSections = document.querySelector('.main-content');
+window.Vue = require('vue').default;
 
-function pageTransition() {
-    // button click active-btn class
-    for (let val of sectBtn) {
-        val.addEventListener('click', function () {
-            let activeBtn = document.querySelector('.active-btn');
-            activeBtn.classList.remove('active-btn');
-            this.classList.add('active-btn');
-        })
-    }
-}
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-// When button is clicked set active class in to the section and button
-allSections.addEventListener('click', function (e) {
-    let buttonId = e.target.dataset.id;
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-    if (buttonId) {
-        sectBtn.forEach((btn) => {
-            btn.classList.remove('active');
-        })
-        e.target.classList.add('active');
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-        sections.forEach((section) => {
-            section.classList.remove('active');
-        })
-        document.querySelector('.' + buttonId).classList.add('active');
-    }
-})
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-pageTransition();
+const app = new Vue({
+    el: '#app',
+});
